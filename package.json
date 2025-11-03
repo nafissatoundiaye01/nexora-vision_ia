@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@tailwindcss/oxide": "^4.1.16",
-    "@tailwindcss/oxide-win32-x64-msvc": "^4.1.16",
-    "lightningcss-win32-x64-msvc": "^1.30.2",
     "next": "16.0.1",
     "react": "19.2.0",
     "react-dom": "19.2.0"
@@ -27,5 +25,9 @@
     "lightningcss": "^1.30.2",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "optionalDependencies": {
+    "@tailwindcss/oxide-win32-x64-msvc": "^4.1.16",
+    "lightningcss-win32-x64-msvc": "^1.30.2"
   }
 }
