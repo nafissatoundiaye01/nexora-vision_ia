@@ -6,10 +6,12 @@ export default function Home() {
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">N</span>
-              </div>
+            <div className="flex items-center space-x-3">
+              <img
+                src="/nexora-logo.png"
+                alt="NEXORA Logo"
+                className="h-12 w-auto object-cover"
+              />
               <span className="text-xl font-bold text-slate-900">NEXORA Vision IA</span>
             </div>
             <div className="hidden md:flex space-x-8">
@@ -51,9 +53,13 @@ export default function Home() {
               <button className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition transform hover:scale-105">
                 Voir la démo
               </button>
-              <button className="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-full text-lg font-semibold hover:border-blue-500 hover:text-blue-600 transition">
-                Télécharger le pitch deck
-              </button>
+              <a
+                href="/Projet_Digitalisation_Infractions_Routieres_Senegal.pdf"
+                download="NEXORA_Vision_IA_Presentation.pdf"
+                className="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-full text-lg font-semibold hover:border-blue-500 hover:text-blue-600 transition inline-block"
+              >
+                Télécharger le document
+              </a>
             </div>
 
             {/* Hero Image/Video Placeholder */}
@@ -373,50 +379,116 @@ export default function Home() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Technologie</span>
+            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Recherche & Développement</span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-4 mb-6">
-              Stack Technique Moderne
+              Intelligence Artificielle en Développement
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Technologies de pointe pour une solution robuste et scalable
+              Un modèle IA adapté au contexte africain, actuellement en phase de recherche et d'entraînement
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 hover:border-blue-300 transition">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">Intelligence Artificielle</h3>
-              <div className="space-y-4">
-                {["TensorFlow / PyTorch", "YOLO / OpenCV", "OCR pour plaques", "Deep Learning"].map((tech, idx) => (
-                  <div key={idx} className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-slate-700">{tech}</span>
-                  </div>
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-blue-300">
+              <div className="flex items-start space-x-4 mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">🤖</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Modèle YOLO Personnalisé</h3>
+                  <span className="inline-block bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full">En développement</span>
+                </div>
+              </div>
+              <p className="text-slate-600 mb-4">
+                Nous développons actuellement un modèle de détection d'objets basé sur YOLO (You Only Look Once),
+                spécifiquement entraîné pour reconnaître :
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "Plaques d'immatriculation sénégalaises",
+                  "Véhicules et types de véhicules locaux",
+                  "Infractions spécifiques au contexte africain",
+                  "Conditions routières et environnement local"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start space-x-3">
+                    <svg className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-slate-700 text-sm">{item}</span>
+                  </li>
                 ))}
+              </ul>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
+              <div className="flex items-start space-x-4 mb-4">
+                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">🎯</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Contexte Africain</h3>
+                  <span className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">Priorité</span>
+                </div>
+              </div>
+              <p className="text-slate-600 mb-4">
+                Notre approche se distingue par une adaptation complète au contexte local :
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "Dataset avec images du Sénégal et d'Afrique",
+                  "Reconnaissance des formats de plaques locales",
+                  "Adaptation aux infrastructures routières africaines",
+                  "Prise en compte des conditions d'éclairage tropicales"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start space-x-3">
+                    <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-slate-700 text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Défis Techniques */}
+          <div className="bg-gradient-to-br from-red-50 to-orange-50 p-8 rounded-2xl border border-red-200">
+            <div className="flex items-start space-x-4 mb-6">
+              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">⚠️</span>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Défis Actuels de Développement</h3>
+                <p className="text-slate-700">
+                  Notre projet fait face à des contraintes techniques qui nécessitent un soutien financier
+                </p>
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 hover:border-green-300 transition">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">Backend & Cloud</h3>
-              <div className="space-y-4">
-                {["Node.js / Python", "PostgreSQL / MongoDB", "AWS / Azure", "API REST / GraphQL"].map((tech, idx) => (
-                  <div key={idx} className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-slate-700">{tech}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 hover:border-cyan-300 transition">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">Applications</h3>
-              <div className="space-y-4">
-                {["React / Next.js", "React Native / Flutter", "Tailwind CSS", "Mobile Money API"].map((tech, idx) => (
-                  <div key={idx} className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
-                    <span className="text-slate-700">{tech}</span>
-                  </div>
-                ))}
-              </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: "💾",
+                  title: "Manque de Données",
+                  desc: "Besoin de milliers d'images annotées du contexte africain pour entraîner efficacement le modèle"
+                },
+                {
+                  icon: "🖥️",
+                  title: "Absence de GPU",
+                  desc: "Tests en local limités sans GPU pour l'entraînement du modèle deep learning"
+                },
+                {
+                  icon: "☁️",
+                  title: "Plateformes Payantes",
+                  desc: "Coût élevé des services cloud GPU (AWS, Google Cloud, Azure) pour l'entraînement IA"
+                }
+              ].map((challenge, idx) => (
+                <div key={idx} className="bg-white p-6 rounded-xl border border-red-200">
+                  <div className="text-4xl mb-3">{challenge.icon}</div>
+                  <h4 className="font-bold text-slate-900 mb-2">{challenge.title}</h4>
+                  <p className="text-sm text-slate-600">{challenge.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -435,40 +507,71 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Opportunité d'Investissement</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">À Quoi Servira Votre Financement ?</h3>
+              <div className="bg-blue-50 p-6 rounded-xl border border-blue-200 mb-6">
+                <p className="text-slate-700 text-sm leading-relaxed">
+                  Votre investissement nous permettra de surmonter les barrières techniques actuelles et
+                  d'accélérer considérablement le développement de notre solution IA.
+                </p>
+              </div>
+
               <div className="space-y-6">
                 {[
                   {
-                    title: "Marché en croissance",
-                    desc: "Besoin urgent au Sénégal et exportable en Afrique (54 pays)"
+                    icon: "💾",
+                    title: "Collecte et Annotation de Données",
+                    desc: "Créer un dataset de 50,000+ images annotées du contexte sénégalais et africain",
+                    budget: "30%"
                   },
                   {
-                    title: "Modèle économique viable",
-                    desc: "SaaS pour gouvernements + revenus d'amendes optimisés"
+                    icon: "☁️",
+                    title: "Infrastructure Cloud GPU",
+                    desc: "Accès à des serveurs GPU puissants (AWS, Google Cloud) pour entraîner notre modèle YOLO",
+                    budget: "35%"
                   },
                   {
-                    title: "Impact social mesurable",
-                    desc: "Réduction des accidents et amélioration de la sécurité"
+                    icon: "🔬",
+                    title: "Tests & Validation Terrain",
+                    desc: "Caméras pilotes, équipements de test et validation sur routes réelles",
+                    budget: "20%"
                   },
                   {
-                    title: "Technologie brevetable",
-                    desc: "Algorithmes IA propriétaires adaptés au contexte africain"
+                    icon: "👥",
+                    title: "Équipe de Développement",
+                    desc: "Data scientists et ingénieurs IA spécialisés pour optimiser le modèle",
+                    budget: "15%"
                   }
                 ].map((item, idx) => (
-                  <div key={idx} className="flex space-x-4">
+                  <div key={idx} className="flex space-x-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <span className="text-blue-600 font-bold">{idx + 1}</span>
+                      <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center border-2 border-blue-200 text-2xl">
+                        {item.icon}
                       </div>
                     </div>
-                    <div>
-                      <h4 className="font-bold text-slate-900 mb-1">{item.title}</h4>
-                      <p className="text-slate-600">{item.desc}</p>
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between mb-1">
+                        <h4 className="font-bold text-slate-900">{item.title}</h4>
+                        <span className="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">{item.budget}</span>
+                      </div>
+                      <p className="text-slate-600 text-sm">{item.desc}</p>
                     </div>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-6 bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
+                <div className="flex items-start space-x-3">
+                  <span className="text-2xl">💡</span>
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-2">Opportunité Unique</h4>
+                    <p className="text-slate-700 text-sm">
+                      Premier système IA de détection routière adapté au contexte africain.
+                      Potentiel d'expansion vers 54 pays africains après validation au Sénégal.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -493,18 +596,96 @@ export default function Home() {
             </div>
           </div>
 
+          {/* État Actuel vs Avec Financement */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-slate-900 text-center mb-8">Impact du Financement sur le Projet</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Sans financement */}
+              <div className="bg-red-50 p-8 rounded-2xl border-2 border-red-200">
+                <div className="flex items-center space-x-3 mb-4">
+                  <span className="text-3xl">❌</span>
+                  <h4 className="text-xl font-bold text-red-800">Sans Financement</h4>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    "Développement très lent (2-3 ans)",
+                    "Dataset limité (<1000 images)",
+                    "Tests uniquement en simulation",
+                    "Précision IA faible (~60%)",
+                    "Pas d'infrastructure cloud",
+                    //"Équipe réduite (bénévoles)"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start space-x-2">s
+                      <span className="text-red-500 mt-1">✗</span>
+                      <span className="text-slate-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Avec financement */}
+              <div className="bg-green-50 p-8 rounded-2xl border-2 border-green-300 relative">
+                <div className="absolute -top-3 right-4">
+                  <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">OBJECTIF</span>
+                </div>
+                <div className="flex items-center space-x-3 mb-4">
+                  <span className="text-3xl">✅</span>
+                  <h4 className="text-xl font-bold text-green-800">Avec Votre Soutien</h4>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    "MVP opérationnel en 6 mois",
+                    "Dataset robuste (50,000+ images)",
+                    "Tests réels sur routes de Dakar",
+                    "Précision IA élevée (>95%)",
+                    "Infrastructure cloud scalable",
+                    //"Équipe d'experts dédiée"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start space-x-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span className="text-slate-700 font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
           {/* Call to Action */}
           <div className="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl p-12 text-center text-white">
             <h3 className="text-3xl md:text-4xl font-bold mb-4">Rejoignez l'Aventure NEXORA</h3>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Investissez dans une solution qui sauve des vies et transforme la mobilité en Afrique
+              Investissez dans une solution qui sauve des vies et transforme la mobilité en Afrique.
+              Votre soutien permettra de surmonter les obstacles techniques et d'accélérer le déploiement.
             </p>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-8 max-w-3xl mx-auto">
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <div className="text-3xl font-bold mb-1">6 mois</div>
+                  <div className="text-sm opacity-90">Vers le MVP</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold mb-1">54 pays</div>
+                  <div className="text-sm opacity-90">Potentiel africain</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold mb-1">100K+</div>
+                  <div className="text-sm opacity-90">Vies sauvées</div>
+                </div>
+              </div>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-slate-100 transition transform hover:scale-105">
-                Télécharger le Business Plan
-              </button>
+              <a
+                href="/Projet_Digitalisation_Infractions_Routieres_Senegal.pdf"
+                download="NEXORA_Vision_IA_Presentation.pdf"
+                className="bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-slate-100 transition transform hover:scale-105 inline-block"
+              >
+                Télécharger le document
+              </a>
               <button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition">
-                Prendre rendez-vous
+                Discuter du Projet
               </button>
             </div>
           </div>
@@ -516,10 +697,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">N</span>
-                </div>
+              <div className="flex items-center space-x-3 mb-4">
+                <img
+                  src="/nexora-logo.jpg"
+                  alt="NEXORA Logo"
+                  className="h-12 w-auto object-cover"
+                />
                 <span className="text-xl font-bold">NEXORA Vision IA</span>
               </div>
               <p className="text-slate-400">
