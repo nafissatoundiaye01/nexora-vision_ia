@@ -8,11 +8,11 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
               <img
-                src="/nexora-logo.png"
+                src="/nexora.jpg"
                 alt="NEXORA Logo"
-                className="h-12 w-auto object-cover"
+                className="h-12 w-auto "
               />
-              <span className="text-xl font-bold text-slate-900">NEXORA Vision IA</span>
+              <span className="text-xl font-bold text-slate-900">Vision IA</span>
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#problematique" className="text-slate-700 hover:text-blue-600 transition">Problématique</a>
@@ -21,9 +21,9 @@ export default function Home() {
               <a href="#impact" className="text-slate-700 hover:text-blue-600 transition">Impact</a>
               <a href="#financement" className="text-slate-700 hover:text-blue-600 transition">Financement</a>
             </div>
-            <button className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-2 rounded-full hover:shadow-lg transition">
+            <a href="#contact" className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-2 rounded-full hover:shadow-lg transition inline-block">
               Contactez-nous
-            </button>
+            </a>
           </div>
         </div>
       </nav>
@@ -50,31 +50,31 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition transform hover:scale-105">
+              <a href="#demo" className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition transform hover:scale-105 inline-block">
                 Voir la démo
-              </button>
-              <a
+              </a>
+              {/*<a
                 href="/Projet_Digitalisation_Infractions_Routieres_Senegal.pdf"
                 download="NEXORA_Vision_IA_Presentation.pdf"
                 className="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-full text-lg font-semibold hover:border-blue-500 hover:text-blue-600 transition inline-block"
               >
                 Télécharger le document
-              </a>
+              </a>*/}
             </div>
 
-            {/* Hero Image/Video Placeholder */}
-            <div className="mt-16 relative">
-              <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl shadow-2xl overflow-hidden border border-slate-300">
-                <div className="flex items-center justify-center h-full">
-                  <div className="text-center space-y-4">
-                    <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto">
-                      <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                      </svg>
-                    </div>
-                    <p className="text-slate-600 font-medium">Vidéo de démonstration</p>
-                  </div>
-                </div>
+            {/* Hero Video */}
+            <div className="mt-12 relative max-w-4xl mx-auto">
+              <div className="aspect-video rounded-2xl shadow-2xl overflow-hidden border border-slate-300">
+                <video
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src="/hero-video.mp4" type="video/mp4" />
+                  Votre navigateur ne supporte pas la vidéo.
+                </video>
               </div>
               <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl"></div>
               <div className="absolute -top-4 -right-4 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
@@ -152,7 +152,7 @@ export default function Home() {
             <div>
               <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Notre Solution</span>
               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-4 mb-6">
-                NEXORA Vision IA
+                Vision IA
               </h2>
               <p className="text-xl text-slate-700 mb-8">
                 Un système intelligent et automatisé qui transforme la gestion des infractions routières
@@ -179,14 +179,12 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-blue-600 to-cyan-500 rounded-2xl shadow-2xl p-8">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl h-full flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="text-6xl mb-4">🎥</div>
-                    <p className="text-xl font-semibold">Caméras IA</p>
-                    <p className="text-sm mt-2 opacity-90">Surveillance intelligente 24/7</p>
-                  </div>
-                </div>
+              <div className="rounded-2xl shadow-2xl overflow-hidden max-h-[480px]">
+                <img
+                  src="/solution.jpg"
+                  alt="Solution NEXORA Vision IA"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
             </div>
@@ -265,7 +263,7 @@ export default function Home() {
       </section>
 
       {/* Demo/Research Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+      <section id="demo" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Démonstration</span>
@@ -278,26 +276,37 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { title: "Détection d'excès de vitesse", type: "Vidéo" },
-              { title: "Reconnaissance de plaques", type: "Image" },
-              { title: "Interface mobile conducteur", type: "Prototype" },
-              { title: "Dashboard en temps réel", type: "Démo live" }
-            ].map((demo, index) => (
-              <div key={index} className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl shadow-lg overflow-hidden border border-slate-300 relative group cursor-pointer">
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
-                      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">{demo.title}</h3>
-                    <span className="text-sm bg-white/20 px-3 py-1 rounded-full">{demo.type}</span>
-                  </div>
-                </div>
+            {/* Vidéo Détection d'excès de vitesse */}
+            <div className="rounded-2xl shadow-lg overflow-hidden border border-slate-300 relative bg-black flex items-center justify-center h-[500px]">
+              <video
+                className="h-full w-auto object-contain"
+                controls
+                playsInline
+              >
+                <source src="/video-detection-infraction.mp4" type="video/mp4" />
+                Votre navigateur ne supporte pas la vidéo.
+              </video>
+              <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-lg">
+                <h3 className="text-white font-bold">Passage au feu rouge</h3>
+                <span className="text-xs text-white/80">Vidéo</span>
               </div>
-            ))}
+            </div>
+
+            {/* Vidéo Détection de plaques */}
+            <div className="rounded-2xl shadow-lg overflow-hidden border border-slate-300 relative bg-black flex items-center justify-center h-[500px]">
+              <video
+                className="h-full w-auto object-contain"
+                controls
+                playsInline
+              >
+                <source src="/video-reconnaissance-plaque.mp4" type="video/mp4" />
+                Votre navigateur ne supporte pas la vidéo.
+              </video>
+              <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-lg">
+                <h3 className="text-white font-bold">Détection de plaques</h3>
+                <span className="text-xs text-white/80">à faible luminosité</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -395,12 +404,12 @@ export default function Home() {
                   <span className="text-2xl">🤖</span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Modèle YOLO Personnalisé</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Modèle Vision IA</h3>
                   <span className="inline-block bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full">En développement</span>
                 </div>
               </div>
               <p className="text-slate-600 mb-4">
-                Nous développons actuellement un modèle de détection d'objets basé sur YOLO (You Only Look Once),
+                Nous développons actuellement un modèle de détection d'objets,
                 spécifiquement entraîné pour reconnaître :
               </p>
               <ul className="space-y-3">
@@ -480,7 +489,7 @@ export default function Home() {
                 {
                   icon: "☁️",
                   title: "Plateformes Payantes",
-                  desc: "Coût élevé des services cloud GPU (AWS, Google Cloud, Azure) pour l'entraînement IA"
+                  desc: "Coût élevé des services cloud GPU pour l'entraînement IA"
                 }
               ].map((challenge, idx) => (
                 <div key={idx} className="bg-white p-6 rounded-xl border border-red-200">
@@ -500,7 +509,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Investissement</span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-4 mb-6">
-              Pourquoi Financer NEXORA ?
+              Pourquoi Financer Vision IA ?
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Un projet à fort impact sociétal avec un retour sur investissement mesurable
@@ -528,7 +537,7 @@ export default function Home() {
                   {
                     icon: "☁️",
                     title: "Infrastructure Cloud GPU",
-                    desc: "Accès à des serveurs GPU puissants (AWS, Google Cloud) pour entraîner notre modèle YOLO",
+                    desc: "Accès à des serveurs GPU puissants (AWS, Google Cloud) pour entraîner notre modèle",
                     budget: "35%"
                   },
                   {
@@ -653,7 +662,7 @@ export default function Home() {
 
           {/* Call to Action */}
           <div className="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl p-12 text-center text-white">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">Rejoignez l'Aventure NEXORA</h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">Rejoignez l'Aventure Vision IA</h3>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
               Investissez dans une solution qui sauve des vies et transforme la mobilité en Afrique.
               Votre soutien permettra de surmonter les obstacles techniques et d'accélérer le déploiement.
@@ -677,17 +686,95 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/Projet_Digitalisation_Infractions_Routieres_Senegal.pdf"
-                download="NEXORA_Vision_IA_Presentation.pdf"
-                className="bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-slate-100 transition transform hover:scale-105 inline-block"
-              >
-                Télécharger le document
-              </a>
               <button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition">
                 Discuter du Projet
               </button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Contact</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-4 mb-6">
+              Discutons de Votre Projet
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Vous souhaitez en savoir plus sur Vision IA ou discuter d'une collaboration ?
+              N'hésitez pas à nous contacter !
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {[
+              {
+                icon: "📧",
+                title: "Email",
+                info: "nexora.dev.senegal@gmail.com",
+                link: "mailto:nexora.dev.senegal@gmail.com"
+              },
+              {
+                icon: "📱",
+                title: "Téléphone",
+                info: "+221 77 130 85 07",
+                link: "tel:+221771308507"
+              },
+              {
+                icon: "📍",
+                title: "Localisation",
+                info: "Dakar, Sénégal",
+                link: null
+              }
+            ].map((contact, idx) => (
+              <div key={idx} className="text-center p-6 bg-slate-50 rounded-2xl border border-slate-200 hover:border-blue-300 transition">
+                <div className="text-5xl mb-4">{contact.icon}</div>
+                <h3 className="font-bold text-slate-900 mb-2">{contact.title}</h3>
+                {contact.link ? (
+                  <a href={contact.link} className="text-blue-600 hover:text-blue-700 transition">
+                    {contact.info}
+                  </a>
+                ) : (
+                  <p className="text-slate-600">{contact.info}</p>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Envoyez-nous un Message</h3>
+            <form className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  placeholder="Nom complet"
+                  className="w-full px-4 py-3 rounded-lg border text-slate-900 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="w-full px-4 py-3 rounded-lg border text-slate-900 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
+                />
+              </div>
+              <input
+                type="text"
+                placeholder="Sujet"
+                className="w-full px-4 py-3 rounded-lg border text-slate-900 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
+              />
+              <textarea
+                placeholder="Votre message..."
+                rows={5}
+                className="w-full px-4 py-3 rounded-lg border text-slate-900 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition resize-none"
+              ></textarea>
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition transform hover:scale-105"
+              >
+                Envoyer le Message
+              </button>
+            </form>
           </div>
         </div>
       </section>
@@ -703,7 +790,7 @@ export default function Home() {
                   alt="NEXORA Logo"
                   className="h-12 w-auto object-cover"
                 />
-                <span className="text-xl font-bold">NEXORA Vision IA</span>
+                <span className="text-xl font-bold">Vision IA</span>
               </div>
               <p className="text-slate-400">
                 Révolutionner la sécurité routière en Afrique grâce à l'intelligence artificielle.
@@ -711,28 +798,28 @@ export default function Home() {
             </div>
 
             <div>
-              <h4 className="font-bold mb-4">Produit</h4>
+              <h4 className="font-bold mb-4">Navigation</h4>
               <ul className="space-y-2 text-slate-400">
-                <li><a href="#" className="hover:text-white transition">Fonctionnalités</a></li>
-                <li><a href="#" className="hover:text-white transition">Démo</a></li>
-                <li><a href="#" className="hover:text-white transition">Technologie</a></li>
+                <li><a href="#problematique" className="hover:text-white transition">Problématique</a></li>
+                <li><a href="#solution" className="hover:text-white transition">Solution</a></li>
+                <li><a href="#fonctionnalites" className="hover:text-white transition">Fonctionnalités</a></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold mb-4">Entreprise</h4>
+              <h4 className="font-bold mb-4">-</h4>
               <ul className="space-y-2 text-slate-400">
-                <li><a href="#" className="hover:text-white transition">À propos</a></li>
-                <li><a href="#" className="hover:text-white transition">Équipe</a></li>
-                <li><a href="#" className="hover:text-white transition">Carrières</a></li>
+                 <li><a href="#impact" className="hover:text-white transition">Impact</a></li>
+                 <li><a href="#financement" className="hover:text-white transition">Financement</a></li>
+                 <li><a href="#contact" className="hover:text-white transition">Contactez-nous</a></li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-bold mb-4">Contact</h4>
               <ul className="space-y-2 text-slate-400">
-                <li>contact@nexora-vision.sn</li>
-                <li>+221 XX XXX XX XX</li>
+                <li>nexora.dev.senegal@gmail.com</li>
+                <li>+221 77 130 85 07</li>
                 <li>Dakar, Sénégal</li>
               </ul>
             </div>
@@ -740,12 +827,12 @@ export default function Home() {
 
           <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-slate-400 text-sm">
-              © 2025 NEXORA Vision IA. Tous droits réservés.
+              © 2025 Powered by NEXORA. Tous droits réservés.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-slate-400 hover:text-white transition">LinkedIn</a>
-              <a href="#" className="text-slate-400 hover:text-white transition">Twitter</a>
-              <a href="#" className="text-slate-400 hover:text-white transition">GitHub</a>
+              <a href="#" className="text-slate-400 hover:text-white transition">;)</a>
+              <a href="#" className="text-slate-400 hover:text-white transition">:(</a>
+              <a href="#" className="text-slate-400 hover:text-white transition">:|</a>
             </div>
           </div>
         </div>
