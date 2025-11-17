@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import AntiCaptureProvider from "@/components/AntiCaptureProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,6 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "NEXORA Vision IA - Digitalisation des Infractions Routières au Sénégal",
   description: "Système intelligent de détection et gestion des infractions routières au Sénégal. Solution basée sur l'IA pour automatiser la sécurité routière.",
+  other: {
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'SAMEORIGIN',
+  }
 };
 
 export default function RootLayout({
@@ -27,7 +32,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AntiCaptureProvider>
+          {children}
+        </AntiCaptureProvider>
       </body>
     </html>
   );

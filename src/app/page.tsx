@@ -1,4 +1,9 @@
+import { getAllVideos } from '@/lib/videos';
+import ProtectedVideo from '@/components/ProtectedVideo';
+
 export default function Home() {
+  const { heroVideos, feuxRougeVideos, sansCasqueVideos, surveillanceVideos, telephoneVolantVideos } = getAllVideos();
+
   return (
     <div className="min-h-screen bg-white">
 
@@ -33,8 +38,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-8">
             <div className="inline-block">
-              <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">
-                🚀 Innovation en Sécurité Routière
+              <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 justify-center">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+                </svg>
+                Innovation en Sécurité Routière
               </span>
             </div>
 
@@ -63,22 +71,24 @@ export default function Home() {
             </div>
 
             {/* Hero Video */}
-            <div className="mt-12 relative max-w-4xl mx-auto">
-              <div className="aspect-video rounded-2xl shadow-2xl overflow-hidden border border-slate-300">
-                <video
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                >
-                  <source src="/hero-video.mp4" type="video/mp4" />
-                  Votre navigateur ne supporte pas la vidéo.
-                </video>
+            {heroVideos.length > 0 && (
+              <div className="mt-12 relative max-w-4xl mx-auto">
+                <div className="aspect-video rounded-2xl shadow-2xl overflow-hidden border border-slate-300">
+                  <video
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src={heroVideos[0]} type="video/mp4" />
+                    Votre navigateur ne supporte pas la vidéo.
+                  </video>
+                </div>
+                <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl"></div>
+                <div className="absolute -top-4 -right-4 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
               </div>
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl"></div>
-              <div className="absolute -top-4 -right-4 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
-            </div>
+            )}
           </div>
         </div>
       </section>
@@ -120,24 +130,24 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: "❌",
+                icon: <svg className="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "Manque de Traçabilité",
                 description: "Les contrevenants sont difficiles à identifier et suivre. Absence de système centralisé."
               },
               {
-                icon: "⚠️",
+                icon: <svg className="w-12 h-12 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>,
                 title: "Corruption & Opacité",
                 description: "Processus manuel favorisant les arrangements et le manque de transparence."
               },
               {
-                icon: "⏱️",
+                icon: <svg className="w-12 h-12 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "Lenteur & Inefficacité",
                 description: "Délais importants dans le traitement des infractions et le recouvrement des amendes."
               }
             ].map((problem, index) => (
               <div key={index} className="bg-slate-50 p-8 rounded-2xl shadow-lg border border-slate-200 hover:shadow-xl hover:border-blue-300 transition">
-                <div className="text-5xl mb-4">{problem.icon}</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{problem.title}</h3>
+                <div className="flex justify-center mb-4">{problem.icon}</div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3 text-center">{problem.title}</h3>
                 <p className="text-slate-600">{problem.description}</p>
               </div>
             ))}
@@ -208,46 +218,46 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: "🎥",
+                icon: <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>,
                 title: "Détection Automatisée",
                 description: "Caméras intelligentes avec IA pour détecter les infractions en temps réel",
                 features: ["Excès de vitesse", "Feu rouge", "Stationnement interdit", "Dépassement dangereux"]
               },
               {
-                icon: "💾",
+                icon: <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>,
                 title: "Base de Données Centralisée",
                 description: "Stockage sécurisé de toutes les infractions avec historique complet",
                 features: ["Données sécurisées", "Historique complet", "Recherche avancée", "Rapports détaillés"]
               },
               {
-                icon: "📱",
+                icon: <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
                 title: "App Mobile Conducteur",
                 description: "Interface intuitive pour les conducteurs avec notifications en temps réel",
                 features: ["Notifications push", "Paiement mobile", "Historique", "Conseils sécurité"]
               },
               {
-                icon: "🖥️",
+                icon: <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
                 title: "Dashboard Autorités",
                 description: "Tableau de bord complet pour le suivi et l'analyse des infractions",
                 features: ["Vue temps réel", "Statistiques", "Filtres avancés", "Export de données"]
               },
               {
-                icon: "👮",
+                icon: <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>,
                 title: "App Mobile Agents",
                 description: "Outil terrain pour les agents de contrôle routier",
                 features: ["Scan de plaques", "Signalement manuel", "Accès historique", "Mode offline"]
               },
               {
-                icon: "🤖",
+                icon: <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" /></svg>,
                 title: "Intelligence Artificielle",
                 description: "Algorithmes avancés pour l'analyse et la prédiction",
                 features: ["Reconnaissance d'images", "Analyse prédictive", "Zones à risque", "Apprentissage continu"]
               }
             ].map((feature, index) => (
               <div key={index} className="bg-slate-50 p-6 rounded-2xl shadow-lg border border-slate-200 hover:shadow-xl hover:border-blue-300 transition hover:-translate-y-1">
-                <div className="text-5xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
-                <p className="text-slate-600 mb-4">{feature.description}</p>
+                <div className="flex justify-center mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3 text-center">{feature.title}</h3>
+                <p className="text-slate-600 mb-4 text-center">{feature.description}</p>
                 <ul className="space-y-2">
                   {feature.features.map((item, idx) => (
                     <li key={idx} className="flex items-center space-x-2 text-sm text-slate-600">
@@ -268,45 +278,91 @@ export default function Home() {
           <div className="text-center mb-16">
             <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Démonstration</span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-4 mb-6">
-              Recherches & Prototypes
+              Capacités de Détection IA
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Découvrez nos travaux de recherche et démonstrations techniques
+              Notre système détecte automatiquement plusieurs types d'infractions en temps réel
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Vidéo Détection d'excès de vitesse */}
-            <div className="rounded-2xl shadow-lg overflow-hidden border border-slate-300 relative bg-black flex items-center justify-center h-[500px]">
-              <video
-                className="h-full w-auto object-contain"
-                controls
-                playsInline
-              >
-                <source src="/video-detection-infraction.mp4" type="video/mp4" />
-                Votre navigateur ne supporte pas la vidéo.
-              </video>
-              <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-lg">
-                <h3 className="text-white font-bold">Passage au feu rouge</h3>
-                <span className="text-xs text-white/80">Vidéo</span>
+          {/* Détection d'Infractions */}
+          {(feuxRougeVideos.length > 0 || sansCasqueVideos.length > 0 || telephoneVolantVideos.length > 0) && (
+            <div className="mb-16">
+              <div className="flex items-center space-x-3 mb-8">
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                  <svg className="w-7 h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-slate-900">Détection d'Infractions</h3>
+                </div>
               </div>
-            </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+                {/* Feux rouges */}
+                {feuxRougeVideos.map((video, index) => (
+                  <ProtectedVideo
+                    key={`feux-${index}`}
+                    src={video}
+                    showLabel={false}
+                  />
+                ))}
 
-            {/* Vidéo Détection de plaques */}
-            <div className="rounded-2xl shadow-lg overflow-hidden border border-slate-300 relative bg-black flex items-center justify-center h-[500px]">
-              <video
-                className="h-full w-auto object-contain"
-                controls
-                playsInline
-              >
-                <source src="/video-reconnaissance-plaque.mp4" type="video/mp4" />
-                Votre navigateur ne supporte pas la vidéo.
-              </video>
-              <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-lg">
-                <h3 className="text-white font-bold">Détection de plaques</h3>
-                <span className="text-xs text-white/80">à faible luminosité</span>
+                {/* Sans casque */}
+                {sansCasqueVideos.map((video, index) => (
+                  <ProtectedVideo
+                    key={`casque-${index}`}
+                    src={video}
+                    showLabel={false}
+                  />
+                ))}
+
+                {/* Téléphone au volant */}
+                {telephoneVolantVideos.map((video, index) => (
+                  <ProtectedVideo
+                    key={`tel-${index}`}
+                    src={video}
+                    showLabel={false}
+                  />
+                ))}
               </div>
             </div>
+          )}
+
+          {/* Surveillance & Tracking */}
+          {surveillanceVideos.length > 0 && (
+            <div className="mb-8">
+              <div className="flex items-center space-x-3 mb-8">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-slate-900">Surveillance & Tracking</h3>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+                {surveillanceVideos.map((video, index) => (
+                  <ProtectedVideo
+                    key={index}
+                    src={video}
+                    showLabel={true}
+                    label={`Surveillance #${index + 1}`}
+                    subtitle="Tracking automatique"
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Call to Action */}
+          <div className="mt-12 text-center bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl p-8 text-white">
+            <h3 className="text-2xl font-bold mb-3">Capacités Avancées de Vision IA</h3>
+            <p className="text-lg opacity-90 max-w-2xl mx-auto">
+              Ces démonstrations illustrent la puissance de notre système de détection automatique.
+              Notre IA continue d'évoluer pour détecter encore plus d'infractions et améliorer la sécurité routière.
+            </p>
           </div>
         </div>
       </section>
@@ -327,32 +383,32 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: "⚡",
+                icon: <svg className="w-12 h-12 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
                 title: "Automatisation",
                 description: "100% automatisé",
                 detail: "De la détection au paiement"
               },
               {
-                icon: "🛡️",
+                icon: <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
                 title: "Transparence",
                 description: "Réduction corruption",
                 detail: "Traçabilité complète"
               },
               {
-                icon: "⏱️",
+                icon: <svg className="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "Gain de temps",
                 description: "Processus instantané",
                 detail: "Pour tous les acteurs"
               },
               {
-                icon: "📊",
+                icon: <svg className="w-12 h-12 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
                 title: "Données exploitables",
                 description: "Analyses avancées",
                 detail: "Planification optimale"
               }
             ].map((benefit, index) => (
               <div key={index} className="text-center p-6 bg-slate-50 rounded-2xl shadow-lg border border-slate-200 hover:border-blue-300 transition">
-                <div className="text-6xl mb-4">{benefit.icon}</div>
+                <div className="flex justify-center mb-4">{benefit.icon}</div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">{benefit.title}</h3>
                 <div className="text-2xl font-bold text-blue-600 mb-2">{benefit.description}</div>
                 <p className="text-slate-600">{benefit.detail}</p>
@@ -401,7 +457,7 @@ export default function Home() {
             <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-blue-300">
               <div className="flex items-start space-x-4 mb-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-2xl">🤖</span>
+                  <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">Modèle Vision IA</h3>
@@ -432,7 +488,7 @@ export default function Home() {
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
               <div className="flex items-start space-x-4 mb-4">
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-2xl">🎯</span>
+                  <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">Contexte Africain</h3>
@@ -464,7 +520,7 @@ export default function Home() {
           <div className="bg-gradient-to-br from-red-50 to-orange-50 p-8 rounded-2xl border border-red-200">
             <div className="flex items-start space-x-4 mb-6">
               <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-2xl">⚠️</span>
+                <svg className="w-7 h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Défis Actuels de Développement</h3>
@@ -477,24 +533,24 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 {
-                  icon: "💾",
+                  icon: <svg className="w-10 h-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>,
                   title: "Manque de Données",
                   desc: "Besoin de milliers d'images annotées du contexte africain pour entraîner efficacement le modèle"
                 },
                 {
-                  icon: "🖥️",
+                  icon: <svg className="w-10 h-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
                   title: "Absence de GPU",
                   desc: "Tests en local limités sans GPU pour l'entraînement du modèle deep learning"
                 },
                 {
-                  icon: "☁️",
+                  icon: <svg className="w-10 h-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>,
                   title: "Plateformes Payantes",
                   desc: "Coût élevé des services cloud GPU pour l'entraînement IA"
                 }
               ].map((challenge, idx) => (
                 <div key={idx} className="bg-white p-6 rounded-xl border border-red-200">
-                  <div className="text-4xl mb-3">{challenge.icon}</div>
-                  <h4 className="font-bold text-slate-900 mb-2">{challenge.title}</h4>
+                  <div className="flex justify-center mb-3">{challenge.icon}</div>
+                  <h4 className="font-bold text-slate-900 mb-2 text-center">{challenge.title}</h4>
                   <p className="text-sm text-slate-600">{challenge.desc}</p>
                 </div>
               ))}
@@ -529,25 +585,25 @@ export default function Home() {
               <div className="space-y-6">
                 {[
                   {
-                    icon: "💾",
+                    icon: <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>,
                     title: "Collecte et Annotation de Données",
                     desc: "Créer un dataset de 50,000+ images annotées du contexte sénégalais et africain",
                     budget: "30%"
                   },
                   {
-                    icon: "☁️",
+                    icon: <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>,
                     title: "Infrastructure Cloud GPU",
                     desc: "Accès à des serveurs GPU puissants (AWS, Google Cloud) pour entraîner notre modèle",
                     budget: "35%"
                   },
                   {
-                    icon: "🔬",
+                    icon: <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /></svg>,
                     title: "Tests & Validation Terrain",
                     desc: "Caméras pilotes, équipements de test et validation sur routes réelles",
                     budget: "20%"
                   },
                   {
-                    icon: "👥",
+                    icon: <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
                     title: "Équipe de Développement",
                     desc: "Data scientists et ingénieurs IA spécialisés pour optimiser le modèle",
                     budget: "15%"
@@ -555,7 +611,7 @@ export default function Home() {
                 ].map((item, idx) => (
                   <div key={idx} className="flex space-x-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
                     <div className="flex-shrink-0">
-                      <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center border-2 border-blue-200 text-2xl">
+                      <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center border-2 border-blue-200">
                         {item.icon}
                       </div>
                     </div>
@@ -572,7 +628,7 @@ export default function Home() {
 
               <div className="mt-6 bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
                 <div className="flex items-start space-x-3">
-                  <span className="text-2xl">💡</span>
+                  <svg className="w-8 h-8 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
                   <div>
                     <h4 className="font-bold text-slate-900 mb-2">Opportunité Unique</h4>
                     <p className="text-slate-700 text-sm">
@@ -612,15 +668,14 @@ export default function Home() {
               {/* Sans financement */}
               <div className="bg-red-50 p-8 rounded-2xl border-2 border-red-200">
                 <div className="flex items-center space-x-3 mb-4">
-                  <span className="text-3xl">❌</span>
+                  <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   <h4 className="text-xl font-bold text-red-800">Sans Financement</h4>
                 </div>
                 <ul className="space-y-3">
                   {[
                     "Développement très lent (2-3 ans)",
-                    "Dataset limité (<1000 images)",
+                    "Dataset limité (<10 000 images)",
                     "Tests uniquement en simulation",
-                    "Précision IA faible (~60%)",
                     "Pas d'infrastructure cloud",
                     //"Équipe réduite (bénévoles)"
                   ].map((item, idx) => (
@@ -638,15 +693,15 @@ export default function Home() {
                   <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">OBJECTIF</span>
                 </div>
                 <div className="flex items-center space-x-3 mb-4">
-                  <span className="text-3xl">✅</span>
+                  <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
                   <h4 className="text-xl font-bold text-green-800">Avec Votre Soutien</h4>
                 </div>
                 <ul className="space-y-3">
                   {[
                     "MVP opérationnel en 6 mois",
-                    "Dataset robuste (50,000+ images)",
+                    "Dataset robuste (+100 000 images)",
                     "Tests réels sur routes de Dakar",
-                    "Précision IA élevée (>95%)",
+                    "Meilleure Précision (>95%)",
                     "Infrastructure cloud scalable",
                     //"Équipe d'experts dédiée"
                   ].map((item, idx) => (
@@ -711,26 +766,26 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
               {
-                icon: "📧",
+                icon: <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
                 title: "Email",
                 info: "nexora.dev.senegal@gmail.com",
                 link: "mailto:nexora.dev.senegal@gmail.com"
               },
               {
-                icon: "📱",
+                icon: <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
                 title: "Téléphone",
                 info: "+221 77 130 85 07",
                 link: "tel:+221771308507"
               },
               {
-                icon: "📍",
+                icon: <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
                 title: "Localisation",
                 info: "Dakar, Sénégal",
                 link: null
               }
             ].map((contact, idx) => (
               <div key={idx} className="text-center p-6 bg-slate-50 rounded-2xl border border-slate-200 hover:border-blue-300 transition">
-                <div className="text-5xl mb-4">{contact.icon}</div>
+                <div className="flex justify-center mb-4">{contact.icon}</div>
                 <h3 className="font-bold text-slate-900 mb-2">{contact.title}</h3>
                 {contact.link ? (
                   <a href={contact.link} className="text-blue-600 hover:text-blue-700 transition">
