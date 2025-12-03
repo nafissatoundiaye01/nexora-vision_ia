@@ -25,17 +25,17 @@ export default function ContactForm() {
 
     try {
       // Configuration EmailJS
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_4o9s8gi';
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_4ng6csh';
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YaJKNzmXOYVz-rdUn';
 
       if (!serviceId || !templateId || !publicKey) {
         throw new Error('Configuration EmailJS manquante. Veuillez vérifier le fichier .env.local');
       }
 
       // Récupérer tous les emails depuis les variables d'environnement
-      const mainEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || '';
-      const ccEmailsString = process.env.NEXT_PUBLIC_CONTACT_CC || '';
+      const mainEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'nexora.dev.senegal@gmail.com';
+      const ccEmailsString = process.env.NEXT_PUBLIC_CONTACT_CC || 'ahmadou.ndiaye.pro@gmail.com,nafissatound1@gmail.com,papebecayel@gmail.com';
 
       if (!mainEmail) {
         throw new Error('Email principal non configuré');
