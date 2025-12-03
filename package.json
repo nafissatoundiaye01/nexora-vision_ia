@@ -10,6 +10,7 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@tailwindcss/oxide": "^4.1.16",
     "next": "16.0.1",
     "react": "19.2.0",

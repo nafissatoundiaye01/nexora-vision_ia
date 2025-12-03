@@ -1,5 +1,6 @@
 import { getAllVideos } from '@/lib/videos';
 import ProtectedVideo from '@/components/ProtectedVideo';
+import ContactForm from '@/components/ContactForm';
 
 export default function Home() {
   const { heroVideos, feuxRougeVideos, sansCasqueVideos, surveillanceVideos, telephoneVolantVideos } = getAllVideos();
@@ -1015,39 +1016,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Envoyez-nous un Message</h3>
-            <form className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="Nom complet"
-                  className="w-full px-4 py-3 rounded-lg border text-slate-900 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full px-4 py-3 rounded-lg border text-slate-900 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
-                />
-              </div>
-              <input
-                type="text"
-                placeholder="Sujet"
-                className="w-full px-4 py-3 rounded-lg border text-slate-900 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
-              />
-              <textarea
-                placeholder="Votre message..."
-                rows={5}
-                className="w-full px-4 py-3 rounded-lg border text-slate-900 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition resize-none"
-              ></textarea>
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition transform hover:scale-105"
-              >
-                Envoyer le Message
-              </button>
-            </form>
-          </div>
+          <ContactForm />
         </div>
       </section>
 
