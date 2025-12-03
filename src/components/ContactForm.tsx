@@ -62,7 +62,7 @@ export default function ContactForm() {
       if (response.status === 200) {
         setFormStatus({
           type: 'success',
-          message: 'Merci pour votre message ! La team NEXORA vous répondra sous peu. 🚀'
+          message: 'Merci pour votre message ! La team NEXORA vous répondra sous peu.'
         });
 
         // Réinitialiser le formulaire
